@@ -33,20 +33,65 @@ class LayoutPartCentralState extends State<LayoutPartCentral> {
               const SizedBox(width: 16),
             ],
           ),
-          trailing: Row(mainAxisSize: MainAxisSize.min, children: [
-            CupertinoButton(
-                padding: const EdgeInsets.all(0.0),
-                onPressed: appData.toggleSidebarRight,
-                child: Icon(
-                  CupertinoIcons.sidebar_right,
-                  color: appData.isSidebarRightVisible
-                      ? CupertinoColors.activeBlue
-                      : CupertinoColors.black,
-                  size: 24.0,
-                  semanticLabel: 'Text to announce in accessibility modes',
-                )),
-          ]),
-          middle: Text("hola"),
+          trailing: CupertinoButton(
+              padding: const EdgeInsets.all(0.0),
+              onPressed: appData.toggleSidebarRight,
+              child: Icon(
+                CupertinoIcons.sidebar_right,
+                color: appData.isSidebarRightVisible
+                    ? CupertinoColors.activeBlue
+                    : CupertinoColors.black,
+                size: 24.0,
+                semanticLabel: 'Text to announce in accessibility modes',
+              )),
+          middle: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('Hola'),
+              SizedBox(width: 8),
+              GestureDetector(
+                onTap: () {
+                  showCupertinoModalPopup(
+                    context: context,
+                    builder: (BuildContext context) => CupertinoActionSheet(
+                      title: Text('Opciones'),
+                      actions: [
+                        CupertinoActionSheetAction(
+                          onPressed: () {
+                            // Acciones al seleccionar la opción 1
+                            Navigator.of(context).pop();
+                          },
+                          child: Text('Negre'),
+                        ),
+                        CupertinoActionSheetAction(
+                          onPressed: () {
+                            // Acciones al seleccionar la opción 2
+                            Navigator.of(context).pop();
+                          },
+                          child: Text('Vermell'),
+                        ),
+                        CupertinoActionSheetAction(
+                          onPressed: () {
+                            // Acciones al seleccionar la opción 3
+                            Navigator.of(context).pop();
+                          },
+                          child: Text('Verd'),
+                        ),
+                        CupertinoActionSheetAction(
+                          onPressed: () {
+                            // Acciones al seleccionar la opción 4
+                            Navigator.of(context).pop();
+                          },
+                          child: Text('Blau'),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+                child: Icon(CupertinoIcons.heart),
+              ),
+            ],
+          ),
         ),
         child: Padding(
           padding: const EdgeInsets.only(top: 50.0),
