@@ -1,3 +1,4 @@
+import 'package:cupertino_base/layout_part_right.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 import 'app_data.dart';
@@ -17,8 +18,11 @@ class _LayoutDesktopState extends State<LayoutDesktop> {
     AppData appData = Provider.of<AppData>(context);
 
     return WidgetSidebars(
+        isSidebarRightVisible: appData.isSidebarRightVisible,
         isSidebarLeftVisible: appData.isSidebarLeftVisible,
+        right: const LayoutPartRight(),
         left: const LayoutPartLeft(),
-        central: const LayoutPartCentral());
+        central: const LayoutPartCentral(),);
+        
   }
 }
